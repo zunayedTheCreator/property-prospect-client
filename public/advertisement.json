@@ -1,0 +1,45 @@
+[
+    {
+      "id": 1,
+      "image": "https://i.postimg.cc/HskHyJXV/1.jpg",
+      "location": "123 Main St, Springfield, IL",
+      "price_range": "$200,000 - $250,000",
+      "verification_status": "Verified"
+    },
+    {
+      "id": 2,
+      "image": "https://i.postimg.cc/02Xvd80Z/2.jpg",
+      "location": "456 Elm St, Austin, TX",
+      "price_range": "$300,000 - $350,000",
+      "verification_status": "Verified"
+    },
+    {
+      "id": 3,
+      "image": "https://i.postimg.cc/W1Dv5Q9V/3.jpg",
+      "location": "789 Oak St, Denver, CO",
+      "price_range": "$400,000 - $450,000",
+      "verification_status": "Unverified"
+    },
+    {
+      "id": 4,
+      "image": "https://i.postimg.cc/htHq6pwd/4.jpg",
+      "location": "101 Pine St, Miami, FL",
+      "price_range": "$500,000 - $550,000",
+      "verification_status": "Verified"
+    },
+    {
+      "id": 5,
+      "image": "https://i.postimg.cc/DZh3ym7f/5.jpg",
+      "location": "202 Maple St, Seattle, WA",
+      "price_range": "$600,000 - $650,000",
+      "verification_status": "Unverified"
+    },
+    {
+      "id": 6,
+      "image": "https://i.postimg.cc/JnQVymhN/6.jpg",
+      "location": "303 Birch St, Boston, MA",
+      "price_range": "$700,000 - $750,000",
+      "verification_status": "Verified"
+    }
+  ]
+  

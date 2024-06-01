@@ -1,9 +1,10 @@
 import React from 'react';
+import Advertisement from './Advertisement';
 
 const Home = () => {
     return (
         <div className='pt-20'>
-            Home
+            <Advertisement></Advertisement>
         </div>
     );
 };

@@ -4,9 +4,9 @@ import Navbar from '../Shared/Navbar/Navbar';
 
 const Main = () => {
     return (
-        <div>
+        <div className='bg-[#3AAFA9] h-full'>
             <Navbar></Navbar>
-            <div className='bg-[#3AAFA9] h-full'>
+            <div className='max-w-7xl mx-auto border'>
                 <Outlet></Outlet>
             </div>
         </div>

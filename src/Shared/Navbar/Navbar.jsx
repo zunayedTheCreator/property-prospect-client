@@ -20,7 +20,7 @@ const Navbar = () => {
                     }>All Properties</NavLink></li>
     </>
     return (
-        <div className="navbar bg-[#17242A] text-[#FEFFFF] px-6 absolute z-[1000] top-0 left-0">
+        <div className="navbar bg-[#17242A] text-[#FEFFFF] px-6 z-[1000] top-0 left-0 fixed">
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
