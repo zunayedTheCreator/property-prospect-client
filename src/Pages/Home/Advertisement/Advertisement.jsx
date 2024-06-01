@@ -22,7 +22,7 @@ const Advertisement = () => {
     const cards = datas.map(data => <SwiperSlide key={data.id}><AdvertisementCard data={data}></AdvertisementCard></SwiperSlide>)
 
     return (
-        <div className='max-w-4xl mx-auto'>
+        <div className='max-w-4xl mx-auto mb-9'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
