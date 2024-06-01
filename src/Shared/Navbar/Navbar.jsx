@@ -4,20 +4,20 @@ import { MdDashboard } from "react-icons/md";
 
 const Navbar = () => {
     const navLinks = <>
-        <li><NavLink to={'/'} className={({ isActive, isPending }) =>
+        <NavLink to={'/'} className={({ isActive, isPending }) =>
                       isActive
                         ? " bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold text-black"
                         : isPending
-                        ? "pending"
-                        : "rounded-full font-bold"
-                    }>Home</NavLink></li>
-        <li><NavLink to={'blog'} className={({ isActive, isPending }) =>
+                        ? "pending text-[#FEFFFF]"
+                        : "rounded-full font-bold text-[#FEFFFF]"
+                    }><li><a>Home</a></li></NavLink>
+        <NavLink to={'/all-properties'} className={({ isActive, isPending }) =>
                       isActive
                         ? " bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold text-black"
                         : isPending
-                        ? "pending"
-                        : "rounded-full font-bold"
-                    }>All Properties</NavLink></li>
+                        ? "pending text-[#FEFFFF]"
+                        : "rounded-full font-bold text-[#FEFFFF]"
+                    }><li><a>All Properties</a></li></NavLink>
     </>
     return (
         <div className="navbar bg-[#17242A] text-[#FEFFFF] px-6 z-[1000] top-0 left-0 fixed">
