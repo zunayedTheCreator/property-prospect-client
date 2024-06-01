@@ -38,8 +38,9 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-end">
+                <h3 className='text-sm font-bold border-r-2 border-[#FEFFFF] pr-2 mr-2'>Dashboard</h3>
                 <NavLink to={'/dashboard'}><MdDashboard className='text-2xl mr-4 hover:rotate-12 duration-200'></MdDashboard></NavLink>
-                <a className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] font-bold text-black rounded px-6">Login</a>
+                <a className="btn min-h-0 h-8 bg-transparent hover:bg-[#DEF2F1] font-bold rounded px-4 border-2 border-[#FEFFFF] text-[#FEFFFF] hover:text-black hover:border-[#FEFFFF]">Login</a>
             </div>
         </div>
     );
