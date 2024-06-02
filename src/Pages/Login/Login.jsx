@@ -1,11 +1,11 @@
-import React, { createContext } from 'react';
+import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import lock from '../../../public/images/lock.gif'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 const Login = () => {
 
-    const {signIn} = createContext(AuthContext);
+    const {signIn} = useContext(AuthContext);
 
     const handleLogin = e =>{
         e.preventDefault();
