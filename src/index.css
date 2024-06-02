@@ -20,3 +20,8 @@
   display: grid;
   grid-template-rows: 1fr auto;
 }
+
+.file-input-black::file-selector-button{
+  background-color: #17242A;
+  color: #FEFFFF;
+}
