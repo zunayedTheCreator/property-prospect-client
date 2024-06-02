@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import lock from '../../../public/images/lock.gif'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Login = () => {
 
     const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogin = e =>{
         e.preventDefault();
@@ -17,6 +22,17 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Successfully Signed In!",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            navigate('/');
+        })
+        .catch(error => {
+            toast.error(error)
         })
     } 
 
@@ -45,6 +61,7 @@ const Login = () => {
                     <h3 className='text-[#FEFFFF] font-bold text-center py-2'>New Here? Please <Link to={'/register'} className='text-[#17242A] font-bold'>Register</Link></h3>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

@@ -32,7 +32,7 @@ const Register = () => {
                         icon: "success",
                         title: "Successfully Registered!",
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 2000
                     });
                     navigate('/');
                 })
