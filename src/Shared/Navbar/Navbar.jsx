@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2'
 import { FaEdit, FaUser } from 'react-icons/fa';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
     const {user, logOut} = useContext(AuthContext)
@@ -64,12 +65,14 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-end">
-                <h3 className='hidden md:flex text-sm font-bold border-r-2 border-[#FEFFFF] pr-2 mr-2'>Dashboard</h3>
-                <NavLink to={'/dashboard'}><MdDashboard className='text-2xl mr-2 hover:rotate-12 duration-200 md:mr-5'></MdDashboard></NavLink>
+                {user? <>
+                    <h3 className='hidden md:flex text-sm font-bold border-r-2 border-[#FEFFFF] pr-2 mr-2'>Dashboard</h3>
+                    <NavLink to={'/dashboard'}><MdDashboard className='text-2xl mr-2 hover:rotate-12 duration-200 md:mr-5'></MdDashboard></NavLink>
+                </> : <></>}
                 {user ? <>
                     <div className="dropdown dropdown-end border-x-2 border-[#FEFFFF] md:border-none px-2 md:px-0 mr-2">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar border-2 border-[#FEFFFF] hover:border-[#FEFFFF]">
-                            <div className="w-10 rounded-full">
+                        <div tabIndex={0} role="button" className="btn min-h-0 h-11 w-11 btn-ghost btn-circle avatar border-2 border-[#FEFFFF] hover:border-[#FEFFFF]">
+                            <div className="w-9 rounded-full">
                             <img alt={user?.displayName} src={user?.photoURL} />
                             </div>
                         </div>
@@ -94,12 +97,13 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <h3 className='hidden md:flex font-bold border-r-2 border-[#FEFFFF] pr-2 mr-2'>{user?.displayName}</h3>
-                    <VscSignOut onClick={handleSignOut} className='text-3xl hover:-rotate-12 duration-200 cursor-pointer'></VscSignOut>
+                    <VscSignOut data-tooltip-id="my-tooltip" data-tooltip-content="Sign Out!" onClick={handleSignOut} className='text-3xl hover:-rotate-12 duration-200 cursor-pointer'></VscSignOut>
                 </> : <>
                     <NavLink to={'/login'}><a className="btn min-h-0 h-8 bg-transparent hover:bg-[#DEF2F1] font-bold rounded px-4 border-2 border-[#FEFFFF] text-[#FEFFFF] hover:text-black hover:border-[#FEFFFF]">Login</a></NavLink>
                 </>}
             </div>
             <ToastContainer />
+            <Tooltip place='bottom-start' id="my-tooltip" />
         </div>
     );
 };

@@ -50,7 +50,7 @@ const Register = () => {
     } 
 
     return (
-        <div className='mt-24 mb-6'>
+        <div className='pt-24 mb-6'>
             <div  className='max-w-sm border-2 mx-auto rounded-md border-[#FEFFFF]'>
                 <h2 className='text-[#FEFFFF] font-bold text-4xl py-3 text-center bg-[#17242A] rounded-t-md border-b-2 border-[#FEFFFF]'>Register</h2>
                 <form onSubmit={handleSignUp} className='px-3 py-4'>

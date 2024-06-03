@@ -25,3 +25,7 @@
   background-color: #17242A;
   color: #FEFFFF;
 }
+
+.progress-black::-moz-progress-bar {
+  background-color: #17242A;
+}

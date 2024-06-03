@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import lock from '../../../public/images/lock.gif'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2'
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,6 +11,9 @@ const Login = () => {
 
     const {signIn} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = e =>{
         e.preventDefault();
@@ -29,7 +32,7 @@ const Login = () => {
                 showConfirmButton: false,
                 timer: 2000
             });
-            navigate('/');
+            navigate(from, {replace: true});
         })
         .catch(error => {
             toast.error(error)
@@ -37,7 +40,7 @@ const Login = () => {
     } 
 
     return (
-        <div className='mt-24 mb-6'>
+        <div className='pt-24 mb-6'>
             <div  className='max-w-sm border-2 mx-auto rounded-md border-[#FEFFFF]'>
                 <h2 className='text-[#FEFFFF] font-bold text-4xl py-3 text-center bg-[#17242A] rounded-t-md border-b-2 border-[#FEFFFF]'>Login</h2>
                 <form onSubmit={handleLogin} className='px-3 py-4 container-bottom'>

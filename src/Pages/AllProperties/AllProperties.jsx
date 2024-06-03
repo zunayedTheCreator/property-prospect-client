@@ -15,7 +15,7 @@ const AllProperties = () => {
         })
     }, [])
     return (
-        <div className='mt-20 mb-9'>
+        <div className='pt-20 mb-9'>
             <div className='pt-10 mb-12'>
                 <Header header="All Properties" ></Header>
             </div>

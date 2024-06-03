@@ -6,6 +6,7 @@ import AllProperties from '../Pages/AllProperties/AllProperties';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
+import PrivateRoute from './PrivateRoute';
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
         },
         {
             path:"/all-properties",
-            element: <AllProperties></AllProperties>
+            element: <PrivateRoute><AllProperties></AllProperties></PrivateRoute>
         },
         {
             path:"/login",
