@@ -19,7 +19,7 @@ const Advertisement = () => {
         })
     }, [])
 
-    const cards = datas.map(data => <SwiperSlide key={data.id}><AdvertisementCard data={data}></AdvertisementCard></SwiperSlide>)
+    const cards = datas.map(data => <SwiperSlide key={data._id}><AdvertisementCard data={data}></AdvertisementCard></SwiperSlide>)
 
     return (
         <div className='max-w-4xl mx-auto mb-9'>

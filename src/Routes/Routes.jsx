@@ -7,6 +7,7 @@ import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import PrivateRoute from './PrivateRoute';
+import Details from '../Pages/Details/Details';
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,11 @@ export const router = createBrowserRouter([
         {
             path:"/register",
             element: <Register></Register>
+        },
+        {
+            path:"/property-details/:id",
+            element: <PrivateRoute><Details></Details></PrivateRoute>,
+            loader: ({params}) => fetch(`http://localhost:5000/property/${params.id}`)
         },
       ]
     },

@@ -22,7 +22,7 @@ const AllProperties = () => {
             <div className='max-w-7xl mx-auto'>
                 <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-fit mx-auto'>
                     {
-                        datas.map((data, index) => <PropertiesCard key={index} data={data}></PropertiesCard>)
+                        datas.map((data) => <PropertiesCard key={data._id} data={data}></PropertiesCard>)
                     }
                 </div>
             </div>

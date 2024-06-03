@@ -1,56 +1,62 @@
 [
-    {
-      "property_image": "https://i.postimg.cc/HskHyJXV/1.jpg",
-      "property_title": "Luxury 3 Bedroom Apartment",
-      "property_location": "123 Main St, Springfield, IL",
-      "agent_name": "Rock Johnson",
-      "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
-      "verification_status": "Verified",
-      "price_range": "$200,000 - $250,000"
-    },
-    {
-      "property_image": "https://i.postimg.cc/02Xvd80Z/2.jpg",
-      "property_title": "Modern 2 Bedroom Condo",
-      "property_location": "456 Elm St, Austin, TX",
-      "agent_name": "Rock Johnson",
-      "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
-      "verification_status": "Verified",
-      "price_range": "$300,000 - $350,000"
-    },
-    {
-      "property_image": "https://i.postimg.cc/W1Dv5Q9V/3.jpg",
-      "property_title": "Spacious 4 Bedroom House",
-      "property_location": "789 Oak St, Denver, CO",
-      "agent_name": "Rock Johnson",
-      "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
-      "verification_status": "Verified",
-      "price_range": "$400,000 - $450,000"
-    },
-    {
-      "property_image": "https://i.postimg.cc/htHq6pwd/4.jpg",
-      "property_title": "Cozy 1 Bedroom Studio",
-      "property_location": "101 Pine St, Miami, FL",
-      "agent_name": "Rock Johnson",
-      "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
-      "verification_status": "Verified",
-      "price_range": "$500,000 - $550,000"
-    },
-    {
-      "property_image": "https://i.postimg.cc/DZh3ym7f/5.jpg",
-      "property_title": "Charming 3 Bedroom Bungalow",
-      "property_location": "202 Maple St, Seattle, WA",
-      "agent_name": "Rock Johnson",
-      "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
-      "verification_status": "Verified",
-      "price_range": "$600,000 - $650,000"
-    },
-    {
-      "property_image": "https://i.postimg.cc/JnQVymhN/6.jpg",
-      "property_title": "Elegant 2 Bedroom Loft",
-      "property_location": "303 Birch St, Boston, MA",
-      "agent_name": "Rock Johnson",
-      "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
-      "verification_status": "Verified",
-      "price_range": "$700,000 - $750,000"
-    }
-  ]
+  {
+    "property_image": "https://i.postimg.cc/HskHyJXV/1.jpg",
+    "property_title": "Luxury 3 Bedroom Apartment",
+    "property_location": "123 Main St, Springfield, IL",
+    "agent_name": "Rock Johnson",
+    "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+    "verification_status": "Verified",
+    "price_range": "$200,000 - $250,000",
+    "description": "This luxury 3 bedroom apartment offers modern amenities, spacious living areas, and stunning city views. Located in the heart of Springfield, it's perfect for families or professionals seeking comfort and convenience."
+  },
+  {
+    "property_image": "https://i.postimg.cc/02Xvd80Z/2.jpg",
+    "property_title": "Modern 2 Bedroom Condo",
+    "property_location": "456 Elm St, Austin, TX",
+    "agent_name": "Rock Johnson",
+    "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+    "verification_status": "Verified",
+    "price_range": "$300,000 - $350,000",
+    "description": "This modern 2 bedroom condo features sleek design, open-plan living, and high-end finishes. Situated in vibrant Austin, TX, it offers easy access to local amenities and entertainment options."
+  },
+  {
+    "property_image": "https://i.postimg.cc/W1Dv5Q9V/3.jpg",
+    "property_title": "Spacious 4 Bedroom House",
+    "property_location": "789 Oak St, Denver, CO",
+    "agent_name": "Rock Johnson",
+    "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+    "verification_status": "Verified",
+    "price_range": "$400,000 - $450,000",
+    "description": "This spacious 4 bedroom house is perfect for families, offering ample living space, a large backyard, and modern amenities. Located in a quiet neighborhood of Denver, CO, it's close to schools and parks."
+  },
+  {
+    "property_image": "https://i.postimg.cc/htHq6pwd/4.jpg",
+    "property_title": "Cozy 1 Bedroom Studio",
+    "property_location": "101 Pine St, Miami, FL",
+    "agent_name": "Rock Johnson",
+    "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+    "verification_status": "Verified",
+    "price_range": "$500,000 - $550,000",
+    "description": "This cozy 1 bedroom studio in Miami, FL is perfect for singles or couples. It features modern design, a compact yet efficient layout, and is conveniently located near the beach and nightlife."
+  },
+  {
+    "property_image": "https://i.postimg.cc/DZh3ym7f/5.jpg",
+    "property_title": "Charming 3 Bedroom Bungalow",
+    "property_location": "202 Maple St, Seattle, WA",
+    "agent_name": "Rock Johnson",
+    "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+    "verification_status": "Verified",
+    "price_range": "$600,000 - $650,000",
+    "description": "This charming 3 bedroom bungalow in Seattle, WA offers a blend of traditional and modern features. With a spacious garden and proximity to downtown, it's ideal for families and professionals alike."
+  },
+  {
+    "property_image": "https://i.postimg.cc/JnQVymhN/6.jpg",
+    "property_title": "Elegant 2 Bedroom Loft",
+    "property_location": "303 Birch St, Boston, MA",
+    "agent_name": "Rock Johnson",
+    "agent_image": "https://t3.ftcdn.net/jpg/02/99/04/20/360_F_299042079_vGBD7wIlSeNl7vOevWHiL93G4koMM967.jpg",
+    "verification_status": "Verified",
+    "price_range": "$700,000 - $750,000",
+    "description": "This elegant 2 bedroom loft in Boston, MA features high ceilings, large windows, and modern amenities. Located in a historic building, it offers a unique living experience with easy access to the city’s attractions."
+  }
+]
