@@ -7,7 +7,7 @@ const AllProperties = () => {
     const [datas, setDatas] = useState([]);
 
     useEffect( () => {
-        fetch('properties.json')
+        fetch('http://localhost:5000/property')
         .then(res => res.json())
         .then(data => {
             setDatas(data)

@@ -18,7 +18,7 @@
       "image": "https://i.postimg.cc/W1Dv5Q9V/3.jpg",
       "location": "789 Oak St, Denver, CO",
       "price_range": "$400,000 - $450,000",
-      "verification_status": "Unverified"
+      "verification_status": "Verified"
     },
     {
       "id": 4,
@@ -32,7 +32,7 @@
       "image": "https://i.postimg.cc/DZh3ym7f/5.jpg",
       "location": "202 Maple St, Seattle, WA",
       "price_range": "$600,000 - $650,000",
-      "verification_status": "Unverified"
+      "verification_status": "Verified"
     },
     {
       "id": 6,

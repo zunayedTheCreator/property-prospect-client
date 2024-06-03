@@ -10,7 +10,7 @@ const Reviews = () => {
     const [slicedDatas, setSlicedDatas] = useState([]);
 
     useEffect( () => {
-        fetch('review.json')
+        fetch('http://localhost:5000/review')
         .then(res => res.json())
         .then(data => {
             setSlicedDatas(data.slice(0,5))
