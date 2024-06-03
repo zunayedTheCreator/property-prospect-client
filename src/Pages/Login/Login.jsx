@@ -6,10 +6,11 @@ import { AuthContext } from '../../providers/AuthProvider';
 import Swal from 'sweetalert2'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
-    const {signIn} = useContext(AuthContext);
+    const {signIn, googleLogin} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -39,6 +40,27 @@ const Login = () => {
         })
     } 
 
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleLogin = () => {
+        googleLogin(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Successfully Signed In!",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            navigate(from, {replace: true});
+        })
+        .catch(error => {
+            toast.error(error)
+        })
+    }
+
     return (
         <div className='pt-24 mb-6'>
             <div  className='max-w-sm border-2 mx-auto rounded-md border-[#FEFFFF]'>
@@ -56,7 +78,7 @@ const Login = () => {
                 <div className='w-full border-y-2 border-[#FEFFFF] flex items-center justify-around'>
                     <h3 className='text-[#FEFFFF] font-bold text-lg'>Or Login With:</h3>
                     <div className='flex items-center gap-5 w-fit my-3'>
-                        <FaGoogle className='text-5xl text-[#17242A] bg-[#FEFFFF] rounded-full p-3 hover:rotate-12 duration-200 cursor-pointer hover:p-2'></FaGoogle>
+                        <FaGoogle onClick={handleGoogleLogin} className='text-5xl text-[#17242A] bg-[#FEFFFF] rounded-full p-3 hover:rotate-12 duration-200 cursor-pointer hover:p-2'></FaGoogle>
                         <FaGithub className='text-5xl text-[#17242A] bg-[#FEFFFF] rounded-full p-3 hover:rotate-12 duration-200 cursor-pointer hover:p-2'></FaGithub>
                     </div>
                 </div>
