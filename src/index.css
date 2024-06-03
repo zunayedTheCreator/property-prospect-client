@@ -29,3 +29,29 @@
 .progress-black::-moz-progress-bar {
   background-color: #17242A;
 }
+
+.review-input {
+  resize: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #3a3a3a;
+  color: #c2c2c2;
+  max-height: 300px;
+}
+
+.review-input:is(:focus) {
+  outline: none;
+  color: #c2c2c2;
+  border-bottom-width: 2px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: #FEFFFF;
+}
+
+.review-input::-webkit-scrollbar {
+  width: 0px;
+}
