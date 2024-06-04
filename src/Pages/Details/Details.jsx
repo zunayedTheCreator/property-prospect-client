@@ -77,7 +77,31 @@ const Details = () => {
         })
     }
 
-    console.log(filteredReviews.length);
+    const handleAddToWishlist = () =>{
+        const newProperty = {
+            property_image,
+            property_title,
+            property_location,
+            agent_name,
+            agent_image,
+            verification_status,
+            price_range,
+            user_email: user.email
+        }
+        axiosSecure.post('/wishlist', newProperty)
+        .then(res => {
+            if (res.data.insertedId) {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Added to wishlist!",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                setRefresh(!refresh);
+            }
+        })
+    }
     return (
         <div className='pt-14'>
             <div>
@@ -109,7 +133,7 @@ const Details = () => {
                         <h2 className='flex items-center text-sm md:text-base gap-1'><FaDollarSign className='text-base md:text-lg'></FaDollarSign>Price Range:- {price_range}</h2>
                     </div>
                     <div className='flex justify-end'>
-                        <button className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md">Add to wishlist</button>
+                        <button onClick={handleAddToWishlist} className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md">Add to wishlist</button>
                     </div>
 
                 </div>
