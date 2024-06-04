@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { FaDollarSign, FaMapPin, FaPen } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import axios from 'axios';
 import Swal from 'sweetalert2'
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const Details = () => {
     const {user} = useAuth();
+    const axiosSecure = useAxiosSecure();
     const property = useLoaderData();
     const { property_image, property_title, property_location, agent_name, agent_image, verification_status, price_range, _id, description } = property;
     const presentTime = new Date();
 
     const [reviews, setReviews] = useState([]);
     const [filteredReviews, setFilteredReviews] = useState([]);
+    const [refresh, setRefresh] = useState(false)
 
     const textarea = document.querySelector('textarea')
     textarea?.addEventListener("keyup", e => {
@@ -27,14 +29,14 @@ const Details = () => {
         .then(data => {
             setReviews(data)
         })
-    } , [])
+    } , [refresh])
 
     useEffect(() => {
         if (property) {
           const filtered = reviews.filter(review => review.property_id === _id);
           setFilteredReviews(filtered);
         }
-      }, [property, reviews, _id]);
+      }, [property, reviews, _id, refresh]);
 
     const handleAddReview = e => {
         e.preventDefault();
@@ -57,7 +59,7 @@ const Details = () => {
             posting_date: presentTime
         }
         console.log(newReview);
-        axios.post('http://localhost:5000/review', newReview)
+        axiosSecure.post('/review', newReview)
         .then(res => {
             if (res.data.insertedId) {
                 Swal.fire({
@@ -67,9 +69,10 @@ const Details = () => {
                     showConfirmButton: false,
                     timer: 2000
                 });
+                e.target.review.value = '';
+                setRefresh(!refresh);
             }
         })
-        e.target.review.value = '';
     }
 
     console.log(filteredReviews.length);
@@ -143,7 +146,7 @@ const Details = () => {
                                     <div className='border-t border-[#17242A] max-w-lg mt-3 mb-5'></div>
                                 </div>)
                             }
-                        </div> : <h2 className='text-4xl text-red-600 text-center'>No reviews available :(</h2>
+                        </div> : <h2 className='text-4xl text-red-600 text-center font-semibold'>No reviews available :(</h2>
                     }
                 </div>
             </div>
