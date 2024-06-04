@@ -10,6 +10,7 @@ import PrivateRoute from './PrivateRoute';
 import Details from '../Pages/Details/Details';
 import Dashboard from '../Layout/Dashboard';
 import UserProfile from '../Pages/Dashboard/Profile/UserProfile';
+import MyReviews from '../Pages/Dashboard/MyReviews/MyReviews';
 
 export const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element:<Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
@@ -59,7 +60,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'my-reviews',
-                element: <h2>my-reviews</h2>
+                element: <MyReviews></MyReviews>
             },
         ]
     }

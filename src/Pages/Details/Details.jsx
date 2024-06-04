@@ -56,7 +56,9 @@ const Details = () => {
             review_description: review,
             property_title: property_title,
             property_id: _id,
-            posting_date: presentTime
+            posting_date: presentTime,
+            reviewer_email: user.email,
+            agent_name: agent_name
         }
         console.log(newReview);
         axiosSecure.post('/review', newReview)
