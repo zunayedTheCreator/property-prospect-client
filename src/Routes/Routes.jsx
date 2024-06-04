@@ -9,6 +9,7 @@ import Register from '../Pages/Register/Register';
 import PrivateRoute from './PrivateRoute';
 import Details from '../Pages/Details/Details';
 import Dashboard from '../Layout/Dashboard';
+import UserProfile from '../Pages/Dashboard/Profile/UserProfile';
 
 export const router = createBrowserRouter([
     {
@@ -46,7 +47,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: 'profile',
-                element: <h2>profile</h2>
+                element: <UserProfile></UserProfile>
             },
             {
                 path: 'wishlist',
