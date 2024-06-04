@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaRegClock, FaTrashAlt } from 'react-icons/fa';
+import useAxiosSecure, { axiosSecure } from '../../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2'
 
 const MyReviews = () => {
     const {user} = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     const [filteredReviews, setFilteredReviews] = useState([]);
     const [refresh, setRefresh] = useState(false)
+
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
         fetch('http://localhost:5000/review')
@@ -24,7 +28,29 @@ const MyReviews = () => {
       }, [user, reviews, user.email, refresh]);
 
       const handleDeleteReview = id => {
-        console.log(id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/review/${id}`)
+                .then(res => {
+                    if (res.data.deletedCount > 0) {
+                          Swal.fire({
+                            title: "Deleted!",
+                            text: "Your review deleted successfully.",
+                            icon: "success"
+                          });
+                          setRefresh(!refresh);
+                    }
+                })
+            }
+          });
       }
 
     return (
