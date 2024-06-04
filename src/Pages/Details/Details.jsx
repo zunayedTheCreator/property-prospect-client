@@ -2,6 +2,8 @@ import React from 'react';
 import { FaDollarSign, FaMapPin, FaPen } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
+import Swal from 'sweetalert2'
 
 const Details = () => {
     const {user} = useAuth();
@@ -18,7 +20,36 @@ const Details = () => {
     const handleAddReview = e => {
         e.preventDefault();
         const review = e.target.review.value;
-        console.log(review);
+        if (e.target.review.value === '' || e.target.review.value === ' ') {
+            return Swal.fire({
+                position: "top-right",
+                icon: "error",
+                title: "Please write something",
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+        const newReview = {
+            reviewer_name: user.displayName,
+            reviewer_image: user.photoURL,
+            review_description: review,
+            property_title: property_title,
+            property_id: _id
+        }
+        console.log(newReview);
+        axios.post('http://localhost:5000/review', newReview)
+        .then(res => {
+            if (res.data.insertedId) {
+                Swal.fire({
+                    position: "top-right",
+                    icon: "success",
+                    title: "Thanks for the review!",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+        })
+        e.target.review.value = '';
     }
 
     return (
@@ -60,7 +91,7 @@ const Details = () => {
                     <div className='border-b border-black pb-1 flex items-center justify-between'>
                         <h2 className='text-4xl font-bold ml-2'>Reviews</h2>
                         <button onClick={()=>document.getElementById('my_modal').showModal()} className="btn min-h-0 h-8 bg-transparent hover:bg-[#17242A] font-bold rounded px-4 border-2 border-[#17242A] text-[#17242A] hover:text-[#FEFFFF] hover:border-[#17242A] mr-2"><FaPen></FaPen> Add a review </button>
-                        <dialog id="my_modal" className="modal modal-bottom sm:modal-middle">
+                        <dialog id="my_modal" className="modal modal-bottom sm:modal-middle z-[1]">
                             <div className="modal-box bg-[#17242A] text-[#FEFFFF]">
                                 <form method="dialog">
                                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
