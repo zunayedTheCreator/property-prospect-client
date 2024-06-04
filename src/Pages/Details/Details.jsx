@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaDollarSign, FaMapPin, FaPen } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
@@ -9,6 +9,10 @@ const Details = () => {
     const {user} = useAuth();
     const property = useLoaderData();
     const { property_image, property_title, property_location, agent_name, agent_image, verification_status, price_range, _id, description } = property;
+    const presentTime = new Date();
+
+    const [reviews, setReviews] = useState([]);
+    const [filteredReviews, setFilteredReviews] = useState([]);
 
     const textarea = document.querySelector('textarea')
     textarea?.addEventListener("keyup", e => {
@@ -16,6 +20,21 @@ const Details = () => {
         let scHeight = e.target.scrollHeight;
         textarea.style.height = `${scHeight}px`
     })
+
+    useEffect(() => {
+        fetch('http://localhost:5000/review')
+        .then(res => res.json())
+        .then(data => {
+            setReviews(data)
+        })
+    } , [])
+
+    useEffect(() => {
+        if (property) {
+          const filtered = reviews.filter(review => review.property_id === _id);
+          setFilteredReviews(filtered);
+        }
+      }, [property, reviews, _id]);
 
     const handleAddReview = e => {
         e.preventDefault();
@@ -34,7 +53,8 @@ const Details = () => {
             reviewer_image: user.photoURL,
             review_description: review,
             property_title: property_title,
-            property_id: _id
+            property_id: _id,
+            posting_date: presentTime
         }
         console.log(newReview);
         axios.post('http://localhost:5000/review', newReview)
@@ -52,6 +72,7 @@ const Details = () => {
         e.target.review.value = '';
     }
 
+    console.log(filteredReviews.length);
     return (
         <div className='pt-14'>
             <div>
@@ -59,7 +80,7 @@ const Details = () => {
                     <img className='w-full h-[450px] rounded-lg mx-auto object-cover' src={property_image} alt="" />
                 </div>
                 <div className='border-t-4 border-[#FEFFFF] mt-4 mb-5'></div>
-                <div className='max-w-7xl bg-[#17242A] mx-auto rounded-md py-4 px-6 text-[#FEFFFF] mb-5'>
+                <div className='max-w-7xl bg-[#17242A] mx-auto rounded-md py-4 px-6 text-[#FEFFFF] mb-8'>
 
                     <div className='flex items-center justify-between'>
                         <div className='flex items-center gap-3'>
@@ -88,7 +109,7 @@ const Details = () => {
 
                 </div>
                 <div className='max-w-7xl mx-auto px-2 md:px-0'>
-                    <div className='border-b border-black pb-1 flex items-center justify-between'>
+                    <div className='border-b border-black pb-1 flex items-center justify-between mb-4'>
                         <h2 className='text-4xl font-bold ml-2'>Reviews</h2>
                         <button onClick={()=>document.getElementById('my_modal').showModal()} className="btn min-h-0 h-8 bg-transparent hover:bg-[#17242A] font-bold rounded px-4 border-2 border-[#17242A] text-[#17242A] hover:text-[#FEFFFF] hover:border-[#17242A] mr-2"><FaPen></FaPen> Add a review </button>
                         <dialog id="my_modal" className="modal modal-bottom sm:modal-middle z-[1]">
@@ -104,6 +125,26 @@ const Details = () => {
                             </div>
                         </dialog>
                     </div>
+                    {
+                        filteredReviews.length > 0 ? <div>
+                            {
+                                filteredReviews.map(review => <div className='max-w-3xl' key={review._id}>
+                                    <div className='flex items-center gap-2'>
+                                        <div className="avatar pb-10">
+                                            <div className="w-11 rounded-full border-2 border-[#17242A]">
+                                                <img src={review.reviewer_image} alt={review.reviewer_name} />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h2 className='text-[#17242A] text-lg font-bold border-b border-[#17242A] w-fit mb-2'>{review.reviewer_name}</h2>
+                                            <p className='text-[#17242A] text-sm font-bold'>{review.review_description}</p>
+                                        </div>
+                                    </div>
+                                    <div className='border-t border-[#17242A] max-w-lg mt-3 mb-5'></div>
+                                </div>)
+                            }
+                        </div> : <h2 className='text-4xl text-red-600 text-center'>No reviews available :(</h2>
+                    }
                 </div>
             </div>
         </div>
