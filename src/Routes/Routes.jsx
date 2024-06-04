@@ -11,6 +11,7 @@ import Details from '../Pages/Details/Details';
 import Dashboard from '../Layout/Dashboard';
 import UserProfile from '../Pages/Dashboard/Profile/UserProfile';
 import MyReviews from '../Pages/Dashboard/MyReviews/MyReviews';
+import WishList from '../Pages/Dashboard/WishList/WishList';
 
 export const router = createBrowserRouter([
     {
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'wishlist',
-                element: <h2>wishlist</h2>
+                element: <WishList></WishList>
             },
             {
                 path: 'property-brought',
