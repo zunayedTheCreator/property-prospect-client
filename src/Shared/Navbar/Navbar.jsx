@@ -67,7 +67,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 {user? <>
                     <h3 className='hidden md:flex text-sm font-bold border-r-2 border-[#FEFFFF] pr-2 mr-2'>Dashboard</h3>
-                    <NavLink to={'/dashboard'}><MdDashboard className='text-2xl mr-2 hover:rotate-12 duration-200 md:mr-5'></MdDashboard></NavLink>
+                    <NavLink to={'/dashboard/profile'}><MdDashboard className='text-2xl mr-2 hover:rotate-12 duration-200 md:mr-5'></MdDashboard></NavLink>
                 </> : <></>}
                 {user ? <>
                     <div className="dropdown dropdown-end border-x-2 border-[#FEFFFF] md:border-none px-2 md:px-0 mr-2">
@@ -79,7 +79,7 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#17242A] rounded-box w-52 border border-[#FEFFFF] gap-2">
                             <h3 className='font-bold text-lg ml-2'>{user?.displayName}</h3>
                             <div className='border-b-2 border-[#FEFFFF]'></div>
-                            <NavLink to={'/profile'} className={({ isActive, isPending }) =>
+                            <NavLink to={'/'} className={({ isActive, isPending }) =>
                                 isActive
                                 ? " bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold text-black"
                                 : isPending

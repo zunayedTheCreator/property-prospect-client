@@ -8,6 +8,7 @@ import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import PrivateRoute from './PrivateRoute';
 import Details from '../Pages/Details/Details';
+import Dashboard from '../Layout/Dashboard';
 
 export const router = createBrowserRouter([
     {
@@ -38,4 +39,27 @@ export const router = createBrowserRouter([
         },
       ]
     },
+    {
+        path: 'dashboard',
+        element:<Dashboard></Dashboard>,
+        errorElement: <ErrorPage></ErrorPage>,
+        children: [
+            {
+                path: 'profile',
+                element: <h2>profile</h2>
+            },
+            {
+                path: 'wishlist',
+                element: <h2>wishlist</h2>
+            },
+            {
+                path: 'property-brought',
+                element: <h2>property-brought</h2>
+            },
+            {
+                path: 'my-reviews',
+                element: <h2>my-reviews</h2>
+            },
+        ]
+    }
   ]);
