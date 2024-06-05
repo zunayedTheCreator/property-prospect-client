@@ -9,7 +9,7 @@ const Details = () => {
     const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
     const property = useLoaderData();
-    const { property_image, property_title, property_location, agent_name, agent_image, verification_status, price_range, _id, description } = property;
+    const { property_image, property_title, property_location, agent_name, agent_image, verification_status, price_range, _id, description, agent_email } = property;
     const presentTime = new Date();
 
     const [reviews, setReviews] = useState([]);
@@ -58,7 +58,7 @@ const Details = () => {
             property_id: _id,
             posting_date: presentTime,
             reviewer_email: user.email,
-            agent_name: agent_name
+            agent_name: agent_name,
         }
         console.log(newReview);
         axiosSecure.post('/review', newReview)
@@ -86,7 +86,9 @@ const Details = () => {
             agent_image,
             verification_status,
             price_range,
-            user_email: user.email
+            user_email: user.email,
+            agent_email,
+            main_id: _id
         }
         axiosSecure.post('/wishlist', newProperty)
         .then(res => {

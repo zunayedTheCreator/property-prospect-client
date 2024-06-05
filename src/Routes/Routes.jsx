@@ -12,6 +12,8 @@ import Dashboard from '../Layout/Dashboard';
 import UserProfile from '../Pages/Dashboard/Profile/UserProfile';
 import MyReviews from '../Pages/Dashboard/MyReviews/MyReviews';
 import WishList from '../Pages/Dashboard/WishList/WishList';
+import PropertyBrought from '../Pages/Dashboard/PropertyBrought/PropertyBrought';
+import MakeOffer from '../Pages/Dashboard/MakeOffer/MakeOffer';
 
 export const router = createBrowserRouter([
     {
@@ -57,11 +59,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'property-brought',
-                element: <h2>property-brought</h2>
+                element: <PropertyBrought></PropertyBrought>
             },
             {
                 path: 'my-reviews',
                 element: <MyReviews></MyReviews>
+            },
+            {
+                path: 'make-offer-for/:id',
+                element: <MakeOffer></MakeOffer>,
+                loader: ({params}) => fetch(`http://localhost:5000/wishlist/${params.id}`)
             },
         ]
     }

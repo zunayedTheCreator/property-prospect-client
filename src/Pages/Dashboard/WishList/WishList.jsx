@@ -80,7 +80,7 @@ const WishList = () => {
                             <p className='flex items-center text-sm md:text-base'><FaDollarSign className='text-base md:text-lg'></FaDollarSign>Price Range:- {property.price_range}</p>
                             <div className='max-w-2xl border-t-2 border-[#FEFFFF] mt-2 mb-1'></div>
                             <div className="card-actions mt-2 items-center justify-between">
-                                <button className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md">Make Offer</button>
+                                <Link to={`/dashboard/make-offer-for/${property._id}`}><button className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md">Make Offer</button></Link>
                                 <button onClick={() => handleDeleteWish(property._id)} className="btn btn-square min-h-0 h-10 w-10 bg-red-600 hover:bg-red-500 border-none">
                                     <FaTrashAlt className='text-lg text-[#FEFFFF]'></FaTrashAlt>
                                 </button>
