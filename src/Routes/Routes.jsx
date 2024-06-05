@@ -14,6 +14,7 @@ import MyReviews from '../Pages/Dashboard/ForUser/MyReviews/MyReviews';
 import WishList from '../Pages/Dashboard/ForUser/WishList/WishList';
 import PropertyBrought from '../Pages/Dashboard/ForUser/PropertyBrought/PropertyBrought';
 import MakeOffer from '../Pages/Dashboard/ForUser/MakeOffer/MakeOffer';
+import ManageUser from '../Pages/Dashboard/ForAdmin/ManageUser/ManageUser';
 
 export const router = createBrowserRouter([
     {
@@ -80,7 +81,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'manage-users',
-                element: <h2>manage-users</h2>
+                element: <ManageUser></ManageUser>
             },
             {
                 path: 'manage-reviews',
