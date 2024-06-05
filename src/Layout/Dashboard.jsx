@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import { FaHome } from "react-icons/fa";
+import useAdmin from '../hooks/useAdmin';
+import { AuthContext } from '../providers/AuthProvider';
+import useAgent from '../hooks/useAgent';
+import useAxiosSecure from '../hooks/useAxiosSecure';
 
 const Dashboard = () => {
-    const isUser = false;
-    const isAdmin = true;
+    const {user} = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
+    const [isAgent] = useAgent();
+    const axiosSecure = useAxiosSecure();
+    const [normalUser, setNormalUser] = useState({})
+
+    useEffect(() => {
+        axiosSecure.get(`/user/normal/${user.email}`)
+        .then(res => {
+            setNormalUser(res.data)
+        })
+    }, [axiosSecure, user.email])
+
     return (
         <div className='bg-[#3AAFA9] flex'>
             <div className='hidden lg:block w-[300px] min-h-screen bg-[#17242A] text-[#FEFFFF] px-2 py-3'>
@@ -12,38 +27,6 @@ const Dashboard = () => {
                     <h4 className="text-2xl border-y-none border-l-none border-r-4 border-[#FEFFFF] pr-3 font-bold w-fit">Property Prospect</h4>
                     <Link to={'/'}><FaHome className='text-2xl ml-5'></FaHome></Link>
                 </div>
-                {
-                    isUser ? <ul className='menu p-0 gap-3'>
-                        <NavLink className={({ isActive, isPending }) =>
-                                    isActive
-                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
-                                    : isPending
-                                    ? "pending text-[#FEFFFF]"
-                                    : "rounded-full font-bold text-[#FEFFFF]"
-                                } to={'/dashboard/profile'}><li><a>My Profile</a></li></NavLink>
-                        <NavLink className={({ isActive, isPending }) =>
-                                    isActive
-                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
-                                    : isPending
-                                    ? "pending text-[#FEFFFF]"
-                                    : "rounded-full font-bold text-[#FEFFFF]"
-                                } to={'/dashboard/wishlist'}><li><a>Wishlist</a></li></NavLink>
-                        <NavLink className={({ isActive, isPending }) =>
-                                    isActive
-                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
-                                    : isPending
-                                    ? "pending text-[#FEFFFF]"
-                                    : "rounded-full font-bold text-[#FEFFFF]"
-                                } to={'/dashboard/property-brought'}><li><a>Property Bought</a></li></NavLink>
-                        <NavLink className={({ isActive, isPending }) =>
-                                    isActive
-                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
-                                    : isPending
-                                    ? "pending text-[#FEFFFF]"
-                                    : "rounded-full font-bold text-[#FEFFFF]"
-                                } to={'/dashboard/my-reviews'}><li><a>My Reviews</a></li></NavLink>
-                    </ul> : <></>
-                }
                 {
                     isAdmin ? <ul className='menu p-0 gap-3'>
                         <NavLink className={({ isActive, isPending }) =>
@@ -75,6 +58,70 @@ const Dashboard = () => {
                                     : "rounded-full font-bold text-[#FEFFFF]"
                                 } to={'/dashboard/manage-reviews'}><li><a>Manage reviews</a></li></NavLink>
                     </ul> : <></>
+                }
+                {
+                    isAgent ? <ul className='menu p-0 gap-3'>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/profile'}><li><a>Admin Profile</a></li></NavLink>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/manage-properties'}><li><a>Manage Properties</a></li></NavLink>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/manage-users'}><li><a>Manage Users</a></li></NavLink>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/manage-reviews'}><li><a>Manage reviews</a></li></NavLink>
+                    </ul> : <></>
+                }
+                {
+                    normalUser.role ? <></> : <ul className='menu p-0 gap-3'>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/profile'}><li><a>My Profile</a></li></NavLink>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/wishlist'}><li><a>Wishlist</a></li></NavLink>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/property-brought'}><li><a>Property Bought</a></li></NavLink>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/my-reviews'}><li><a>My Reviews</a></li></NavLink>
+                    </ul>
                 }
             </div>
             <div className='flex-1'>
