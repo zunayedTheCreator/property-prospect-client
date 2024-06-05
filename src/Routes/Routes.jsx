@@ -10,10 +10,10 @@ import PrivateRoute from './PrivateRoute';
 import Details from '../Pages/Details/Details';
 import Dashboard from '../Layout/Dashboard';
 import UserProfile from '../Pages/Dashboard/Profile/UserProfile';
-import MyReviews from '../Pages/Dashboard/MyReviews/MyReviews';
-import WishList from '../Pages/Dashboard/WishList/WishList';
-import PropertyBrought from '../Pages/Dashboard/PropertyBrought/PropertyBrought';
-import MakeOffer from '../Pages/Dashboard/MakeOffer/MakeOffer';
+import MyReviews from '../Pages/Dashboard/ForUser/MyReviews/MyReviews';
+import WishList from '../Pages/Dashboard/ForUser/WishList/WishList';
+import PropertyBrought from '../Pages/Dashboard/ForUser/PropertyBrought/PropertyBrought';
+import MakeOffer from '../Pages/Dashboard/ForUser/MakeOffer/MakeOffer';
 
 export const router = createBrowserRouter([
     {
@@ -53,6 +53,8 @@ export const router = createBrowserRouter([
                 path: 'profile',
                 element: <UserProfile></UserProfile>
             },
+
+            // users route
             {
                 path: 'wishlist',
                 element: <WishList></WishList>
@@ -69,6 +71,20 @@ export const router = createBrowserRouter([
                 path: 'make-offer-for/:id',
                 element: <MakeOffer></MakeOffer>,
                 loader: ({params}) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+            },
+
+            // admin routes
+            {
+                path: 'manage-properties',
+                element: <h2>manage-properties</h2>
+            },
+            {
+                path: 'manage-users',
+                element: <h2>manage-users</h2>
+            },
+            {
+                path: 'manage-reviews',
+                element: <h2>manage-reviews</h2>
             },
         ]
     }

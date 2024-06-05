@@ -7,12 +7,14 @@ import Swal from 'sweetalert2'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleAuthProvider } from 'firebase/auth';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const Login = () => {
 
     const {signIn, googleLogin} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublic = useAxiosPublic();
 
     const from = location.state?.from?.pathname || "/";
 
@@ -47,13 +49,23 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Successfully Signed In!",
-                showConfirmButton: false,
-                timer: 2000
-            });
+            const userInfo = {
+                name: result.user?.displayName,
+                email: result.user?.email
+            }
+            axiosPublic.post('user', userInfo)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Successfully Signed In!",
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    navigate(from, {replace: true});
+                }
+            })
             navigate(from, {replace: true});
         })
         .catch(error => {

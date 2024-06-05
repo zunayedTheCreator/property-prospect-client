@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2'
-import { AuthContext } from '../../../providers/AuthProvider';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { AuthContext } from '../../../../providers/AuthProvider';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { FaDollarSign, FaMapPin, FaUser } from 'react-icons/fa';
 
 const PropertyBrought = () => {

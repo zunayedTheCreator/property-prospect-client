@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../providers/AuthProvider';
+import { AuthContext } from '../../../../providers/AuthProvider';
 import { FaRegClock, FaTrashAlt } from 'react-icons/fa';
-import useAxiosSecure, { axiosSecure } from '../../../hooks/useAxiosSecure';
+import useAxiosSecure, { axiosSecure } from '../../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2'
 
 const MyReviews = () => {

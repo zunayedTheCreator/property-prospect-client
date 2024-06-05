@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../../providers/AuthProvider';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { AuthContext } from '../../../../providers/AuthProvider';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2'
 
 const MakeOffer = () => {
@@ -9,7 +9,7 @@ const MakeOffer = () => {
     const property = useLoaderData();
     const axiosSecure = useAxiosSecure();
 
-    const {property_title, property_location, agent_name, user_email, price_range, property_image} = property;
+    const {property_title, property_location, agent_name, user_email, price_range, property_image, agent_email} = property;
 
     const parsePriceRange = (priceRange) => {
             const [min, max] = priceRange.split(' - ').map(price => parseInt(price.replace(/\$|,/g, ''), 10));
@@ -39,6 +39,7 @@ const MakeOffer = () => {
             user_name, 
             user_email,
             agent_name,
+            agent_email,
             offered_amount, 
             buying_date,
             property_image,

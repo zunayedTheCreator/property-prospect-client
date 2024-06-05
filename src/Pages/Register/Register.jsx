@@ -4,11 +4,13 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2'
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const Register = () => {
 
     const {createUser, profileUpdate} = useContext(AuthContext);
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const handleSignUp = e =>{
         e.preventDefault();
@@ -27,14 +29,23 @@ const Register = () => {
                 console.log(user);
                 profileUpdate(name, image)
                 .then(() => {
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Successfully Registered!",
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
-                    navigate('/');
+                    const userInfo = {
+                        name,
+                        email
+                    }
+                    axiosPublic.post('user', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Successfully Registered!",
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                            navigate('/');
+                        }
+                    })
                 })
                 .catch(error => {
                     toast.error(error)
