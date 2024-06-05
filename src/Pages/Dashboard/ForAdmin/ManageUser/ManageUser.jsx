@@ -16,6 +16,62 @@ const ManageUser = () => {
         }
     })
 
+    const handleMakeAdmin = user => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/user/admin/${user._id}`)
+                .then(res => {
+                    if (res.data.modifiedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: `${user.name} is a admin now!`,
+                            showConfirmButton: false,
+                            timer: 2000
+                          });
+                    }
+                })
+            }
+          });
+    }
+
+    const handleMakeAgent = user => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/user/agent/${user._id}`)
+                .then(res => {
+                    if (res.data.modifiedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: `${user.name} is a agent now!`,
+                            showConfirmButton: false,
+                            timer: 2000
+                          });
+                    }
+                })
+            }
+          });
+    }
+
     const handleDeleteUser = id => {
         Swal.fire({
             title: "Are you sure?",
@@ -66,8 +122,8 @@ const ManageUser = () => {
                                     <th>{index + 1}</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
-                                    <td><button className="btn min-h-0 h-8 bg-transparent hover:bg-[#DEF2F1] font-bold rounded px-4 border-2 border-[#FEFFFF] text-[#FEFFFF] hover:text-black hover:border-[#FEFFFF]">Make Admin</button></td>
-                                    <td><button className="btn min-h-0 h-8 bg-transparent hover:bg-[#DEF2F1] font-bold rounded px-4 border-2 border-[#FEFFFF] text-[#FEFFFF] hover:text-black hover:border-[#FEFFFF]">Make Agent</button></td>
+                                    <td><button onClick={() => handleMakeAdmin(user)} className="btn min-h-0 h-8 bg-transparent hover:bg-[#DEF2F1] font-bold rounded px-4 border-2 border-[#FEFFFF] text-[#FEFFFF] hover:text-black hover:border-[#FEFFFF]">Make Admin</button></td>
+                                    <td><button onClick={() => handleMakeAgent(user)} className="btn min-h-0 h-8 bg-transparent hover:bg-[#DEF2F1] font-bold rounded px-4 border-2 border-[#FEFFFF] text-[#FEFFFF] hover:text-black hover:border-[#FEFFFF]">Make Agent</button></td>
                                     <td><button className="btn min-h-0 h-8 bg-transparent hover:bg-red-600 font-bold rounded px-4 border-2 border-red-600 text-red-600 hover:text-[#FEFFFF]  hover:border-red-700"><MdBlockFlipped className='text-lg'></MdBlockFlipped> Fraud</button></td>
                                     <td><button onClick={() => handleDeleteUser(user._id)} className="btn btn-square min-h-0 h-10 w-10 bg-red-600 hover:bg-red-500 border-none">
                                             <FaTrashAlt className='text-lg text-[#FEFFFF]'></FaTrashAlt>
