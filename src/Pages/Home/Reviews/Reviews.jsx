@@ -13,7 +13,8 @@ const Reviews = () => {
         fetch('http://localhost:5000/review')
         .then(res => res.json())
         .then(data => {
-            setSlicedDatas(data.slice(0,5))
+            const reversedData = data.reverse();
+            setSlicedDatas(reversedData.slice(0,5))
         })
     }, [])
 

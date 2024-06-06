@@ -18,6 +18,7 @@ import ManageUser from '../Pages/Dashboard/ForAdmin/ManageUser/ManageUser';
 import AdminRoute from './AdminRoute';
 import AgentRoute from './AgentRoute';
 import AddProperty from '../Pages/Dashboard/ForAgent/AddProperty/AddProperty';
+import AddedProperties from '../Pages/Dashboard/ForAgent/AddedProperties/AddedProperties';
 
 export const router = createBrowserRouter([
     {
@@ -97,8 +98,8 @@ export const router = createBrowserRouter([
                 element: <AgentRoute><AddProperty></AddProperty></AgentRoute>
             },
             {
-                path: 'manage-users',
-                element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
+                path: 'my-added-properties',
+                element: <AgentRoute><AddedProperties></AddedProperties></AgentRoute>
             },
             {
                 path: 'manage-reviews',
