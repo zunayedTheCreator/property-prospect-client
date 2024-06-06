@@ -15,6 +15,9 @@ import WishList from '../Pages/Dashboard/ForUser/WishList/WishList';
 import PropertyBrought from '../Pages/Dashboard/ForUser/PropertyBrought/PropertyBrought';
 import MakeOffer from '../Pages/Dashboard/ForUser/MakeOffer/MakeOffer';
 import ManageUser from '../Pages/Dashboard/ForAdmin/ManageUser/ManageUser';
+import AdminRoute from './AdminRoute';
+import AgentRoute from './AgentRoute';
+import AddProperty from '../Pages/Dashboard/ForAgent/AddProperty/AddProperty';
 
 export const router = createBrowserRouter([
     {
@@ -81,7 +84,21 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'manage-users',
-                element: <ManageUser></ManageUser>
+                element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
+            },
+            {
+                path: 'manage-reviews',
+                element: <h2>manage-reviews</h2>
+            },
+
+            // agent routes
+            {
+                path: 'add-property',
+                element: <AgentRoute><AddProperty></AddProperty></AgentRoute>
+            },
+            {
+                path: 'manage-users',
+                element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
             },
             {
                 path: 'manage-reviews',

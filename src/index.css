@@ -55,3 +55,7 @@
 .review-input::-webkit-scrollbar {
   width: 0px;
 }
+
+.no-resize {
+  resize: none;
+}

@@ -67,28 +67,35 @@ const Dashboard = () => {
                                     : isPending
                                     ? "pending text-[#FEFFFF]"
                                     : "rounded-full font-bold text-[#FEFFFF]"
-                                } to={'/dashboard/profile'}><li><a>Admin Profile</a></li></NavLink>
+                                } to={'/dashboard/profile'}><li><a>Agent Profile</a></li></NavLink>
                         <NavLink className={({ isActive, isPending }) =>
                                     isActive
                                     ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
                                     : isPending
                                     ? "pending text-[#FEFFFF]"
                                     : "rounded-full font-bold text-[#FEFFFF]"
-                                } to={'/dashboard/manage-properties'}><li><a>Manage Properties</a></li></NavLink>
+                                } to={'/dashboard/add-property'}><li><a>Add Property</a></li></NavLink>
                         <NavLink className={({ isActive, isPending }) =>
                                     isActive
                                     ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
                                     : isPending
                                     ? "pending text-[#FEFFFF]"
                                     : "rounded-full font-bold text-[#FEFFFF]"
-                                } to={'/dashboard/manage-users'}><li><a>Manage Users</a></li></NavLink>
+                                } to={'/dashboard/my-added-properties'}><li><a>My added properties</a></li></NavLink>
                         <NavLink className={({ isActive, isPending }) =>
                                     isActive
                                     ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
                                     : isPending
                                     ? "pending text-[#FEFFFF]"
                                     : "rounded-full font-bold text-[#FEFFFF]"
-                                } to={'/dashboard/manage-reviews'}><li><a>Manage reviews</a></li></NavLink>
+                                } to={'/dashboard/my-sold-properties'}><li><a>My sold properties</a></li></NavLink>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/requested-properties'}><li><a>Requested properties</a></li></NavLink>
                     </ul> : <></>
                 }
                 {
