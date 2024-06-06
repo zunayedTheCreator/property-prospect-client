@@ -5,6 +5,7 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { FaDollarSign, FaMapPin, FaPen, FaTrashAlt, FaUser } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const AddedProperties = () => {
     const {user} = useAuth();
@@ -75,9 +76,9 @@ const AddedProperties = () => {
                                 </div>
                                 <div className='flex items-center gap-3 w-fit'>
                                     {
-                                        property.verification_status === 'Rejected' ? <></> : <button className="btn btn-square min-h-0 h-10 w-10 bg-yellow-500 hover:bg-yellow-400 border-none">
+                                        property.verification_status === 'Rejected' ? <></> : <Link to={`/dashboard/update-property/${property._id}`}><button className="btn btn-square min-h-0 h-10 w-10 bg-yellow-500 hover:bg-yellow-400 border-none">
                                         <FaPen className='text-lg text-[#FEFFFF]'></FaPen>
-                                        </button>
+                                        </button></Link>
                                     }
                                     <button onClick={() => handleDeleteProperty(property)} className="btn btn-square min-h-0 h-10 w-10 bg-red-600 hover:bg-red-500 border-none">
                                         <FaTrashAlt className='text-lg text-[#FEFFFF]'></FaTrashAlt>

@@ -19,6 +19,7 @@ import AdminRoute from './AdminRoute';
 import AgentRoute from './AgentRoute';
 import AddProperty from '../Pages/Dashboard/ForAgent/AddProperty/AddProperty';
 import AddedProperties from '../Pages/Dashboard/ForAgent/AddedProperties/AddedProperties';
+import UpdateProperty from '../Pages/Dashboard/ForAgent/UpdateProperty/UpdateProperty';
 
 export const router = createBrowserRouter([
     {
@@ -102,8 +103,9 @@ export const router = createBrowserRouter([
                 element: <AgentRoute><AddedProperties></AddedProperties></AgentRoute>
             },
             {
-                path: 'manage-reviews',
-                element: <h2>manage-reviews</h2>
+                path: 'update-property/:id',
+                element: <AgentRoute><UpdateProperty></UpdateProperty></AgentRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/property/${params.id}`)
             },
         ]
     }
