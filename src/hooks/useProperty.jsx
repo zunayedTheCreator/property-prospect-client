@@ -7,7 +7,7 @@ const useProperty = () => {
     const {refetch, data: property = []} =  useQuery({
         queryKey: ['cart'],
         queryFn: async ()=>{
-            const res = await axiosSecure.get('property')
+            const res = await axiosSecure.get('/property')
             return res.data;
         }
     })
