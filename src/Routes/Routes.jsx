@@ -20,6 +20,7 @@ import AgentRoute from './AgentRoute';
 import AddProperty from '../Pages/Dashboard/ForAgent/AddProperty/AddProperty';
 import AddedProperties from '../Pages/Dashboard/ForAgent/AddedProperties/AddedProperties';
 import UpdateProperty from '../Pages/Dashboard/ForAgent/UpdateProperty/UpdateProperty';
+import RequestedProperties from '../Pages/Dashboard/ForAgent/RequestedProperties/RequestedProperties';
 
 export const router = createBrowserRouter([
     {
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
                 path: 'update-property/:id',
                 element: <AgentRoute><UpdateProperty></UpdateProperty></AgentRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/property/${params.id}`)
+            },
+            {
+                path: 'requested-properties',
+                element: <AgentRoute><RequestedProperties></RequestedProperties></AgentRoute>
             },
         ]
     }

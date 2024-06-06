@@ -9,7 +9,7 @@ const MakeOffer = () => {
     const property = useLoaderData();
     const axiosSecure = useAxiosSecure();
 
-    const {property_title, property_location, agent_name, user_email, price_range, property_image, agent_email} = property;
+    const {property_title, property_location, agent_name, user_email, price_range, property_image, agent_email, _id} = property;
 
     const parsePriceRange = (priceRange) => {
             const [min, max] = priceRange.split(' - ').map(price => parseInt(price.replace(/\$|,/g, ''), 10));
@@ -43,7 +43,8 @@ const MakeOffer = () => {
             offered_amount, 
             buying_date,
             property_image,
-            status: 'pending'
+            status: 'pending',
+            main_id: _id
         }
     
         if (isWithinRange) {
