@@ -3,21 +3,49 @@ import Header from '../../../../Shared/Header/Header';
 import useAuth from '../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { FaDollarSign, FaMapPin, FaPen, FaTrashAlt, FaUser } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
 
 const AddedProperties = () => {
     const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
-    const [properties, setProperties] = useState([]);
 
-    useEffect(() => {
-        axiosSecure.get(`/property/normal/${user.email}`)
-        .then(res => {
+    const {data: properties = [], refetch} = useQuery({
+        queryKey: ['properties'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/property/normal/${user.email}`)
             const reversedData = res.data.reverse();
-            setProperties(reversedData)
-        })
-    }, [axiosSecure, user.email])
+            return reversedData;
+        }
+    })
 
-    console.log(properties);
+    const handleDeleteProperty = data => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/property/${data._id}`)
+                .then(res => {
+                    if (res.data.deletedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: `${data.property_title} is successfully deleted!`,
+                            showConfirmButton: false,
+                            timer: 2000
+                          });
+                    }
+                })
+            }
+          });
+    }
 
     return (
         <div className='mt-8'>
@@ -51,7 +79,7 @@ const AddedProperties = () => {
                                         <FaPen className='text-lg text-[#FEFFFF]'></FaPen>
                                         </button>
                                     }
-                                    <button className="btn btn-square min-h-0 h-10 w-10 bg-red-600 hover:bg-red-500 border-none">
+                                    <button onClick={() => handleDeleteProperty(property)} className="btn btn-square min-h-0 h-10 w-10 bg-red-600 hover:bg-red-500 border-none">
                                         <FaTrashAlt className='text-lg text-[#FEFFFF]'></FaTrashAlt>
                                     </button>
                                 </div>
