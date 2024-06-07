@@ -43,7 +43,7 @@ const PropertyBrought = () => {
                             <p className='flex items-center'><FaMapPin className='text-lg'></FaMapPin>Location:- {property.property_location}</p>
                             <p className='flex items-center'><FaDollarSign className='text-lg'></FaDollarSign>Offered Price:- {property.offered_amount}</p>
                             <div className="mt-2">
-                                <h2 className="text-center font-bold text-lg w-full text-green-600 border-2 rounded-full border-green-600"> {property.status}</h2>
+                                { property.status === 'Accepted' ? <h2 className="text-center font-bold text-lg w-full text-green-600 border-2 rounded-full border-green-600"> {property.status}</h2> : property.status === 'Rejected' ? <h2 className="text-center font-bold text-lg w-full text-red-600 border-2 rounded-full border-red-600"> {property.status}</h2> : property.status === 'Rejected' ? <h2 className="text-center font-bold text-lg w-full text-cyan-400 border-2 rounded-full border-cyan-400"> {property.status}</h2> : <h2 className="text-center font-bold text-lg w-full text-yellow-400 border-2 rounded-full border-yellow-400"> {property.status}</h2>}
                             </div>
                         </div>
                     </div>)

@@ -20,7 +20,7 @@ const RequestedProperties = () => {
         }
     })
 
-    const handleAccept = id => {
+    const handleAccept = data => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -31,9 +31,9 @@ const RequestedProperties = () => {
             confirmButtonText: "Yes!"
           }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.patch(`/brought-property/accepted/${id}`)
+                axiosSecure.patch(`/brought-property/accepted/${data._id}/${data.main_id}`)
                 .then(res => {
-                    if (res.data.modifiedCount > 0) {
+                    if (res.statusText) {
                         refetch();
                         Swal
                         .fire({
@@ -102,7 +102,7 @@ const RequestedProperties = () => {
                                 <td>{property.user_name}</td>
                                 <td>{property.user_email}</td>
                                 <td>${property.offered_amount}</td>
-                                { property.status === 'Accepted' ? <td><h2 className="font-bold px-3 py-1 w-fit text-lime-400 border-2 rounded-full border-lime-400"> {property.status}</h2></td> : property.status === 'Rejected' ? <td><h2 className="text-center font-bold px-3 py-1 w-fit text-red-600 border-2 rounded-full border-red-600"> {property.status}</h2></td> : <td><button onClick={() => handleAccept(property._id)} className="btn btn-square min-h-0 h-8 w-8 bg-green-600 hover:bg-green-500 border-none">
+                                { property.status === 'Accepted' ? <td><h2 className="font-bold px-3 py-1 w-fit text-lime-400 border-2 rounded-full border-lime-400"> {property.status}</h2></td> : property.status === 'Rejected' ? <td><h2 className="text-center font-bold px-3 py-1 w-fit text-red-600 border-2 rounded-full border-red-600"> {property.status}</h2></td> : <td><button onClick={() => handleAccept(property)} className="btn btn-square min-h-0 h-8 w-8 bg-green-600 hover:bg-green-500 border-none">
                                         <FaCheck className=' text-[#FEFFFF]'></FaCheck>
                                     </button></td>}
                                 { property.status === 'Accepted' ? <td></td> : property.status === 'Rejected' ? <td></td> : <td><button onClick={() => handleReject(property._id)} className="btn btn-square min-h-0 h-8 w-8 bg-red-600 hover:bg-red-500 border-none">
