@@ -21,6 +21,7 @@ import AddProperty from '../Pages/Dashboard/ForAgent/AddProperty/AddProperty';
 import AddedProperties from '../Pages/Dashboard/ForAgent/AddedProperties/AddedProperties';
 import UpdateProperty from '../Pages/Dashboard/ForAgent/UpdateProperty/UpdateProperty';
 import RequestedProperties from '../Pages/Dashboard/ForAgent/RequestedProperties/RequestedProperties';
+import PaymentPage from '../Pages/Dashboard/ForUser/PaymentPage/PaymentPage';
 
 export const router = createBrowserRouter([
     {
@@ -78,6 +79,11 @@ export const router = createBrowserRouter([
                 path: 'make-offer-for/:id',
                 element: <MakeOffer></MakeOffer>,
                 loader: ({params}) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+            },
+            {
+                path: 'payment-for/:id',
+                element: <PaymentPage></PaymentPage>,
+                loader: ({params}) => fetch(`http://localhost:5000/brought-property/${params.id}`)
             },
 
             // admin routes

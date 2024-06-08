@@ -3,12 +3,17 @@ import Swal from 'sweetalert2'
 import { AuthContext } from '../../../../providers/AuthProvider';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { FaDollarSign, FaMapPin, FaUser } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { FaCopy } from "react-icons/fa";
+import { RiCheckDoubleFill } from "react-icons/ri";
 
 const PropertyBrought = () => {
     const {user} = useContext(AuthContext);
     const [properties, setProperties] = useState([]);
     const [filteredProperties, setFilteredProperties] = useState([]);
     const [refresh, setRefresh] = useState(false)
+    const [copied, setCopied] = useState(false)
 
     const axiosSecure = useAxiosSecure();
 
@@ -43,8 +48,19 @@ const PropertyBrought = () => {
                             <p className='flex items-center'><FaMapPin className='text-lg'></FaMapPin>Location:- {property.property_location}</p>
                             <p className='flex items-center'><FaDollarSign className='text-lg'></FaDollarSign>Offered Price:- {property.offered_amount}</p>
                             <div className="mt-2">
-                                { property.status === 'Accepted' ? <h2 className="text-center font-bold text-lg w-full text-green-600 border-2 rounded-full border-green-600"> {property.status}</h2> : property.status === 'Rejected' ? <h2 className="text-center font-bold text-lg w-full text-red-600 border-2 rounded-full border-red-600"> {property.status}</h2> : property.status === 'Rejected' ? <h2 className="text-center font-bold text-lg w-full text-cyan-400 border-2 rounded-full border-cyan-400"> {property.status}</h2> : <h2 className="text-center font-bold text-lg w-full text-yellow-400 border-2 rounded-full border-yellow-400"> {property.status}</h2>}
+                                { property.status === 'Accepted' ? <h2 className="text-center font-bold text-lg w-full text-green-600 border-2 rounded-full border-green-600"> {property.status}</h2> : property.status === 'Rejected' ? <h2 className="text-center font-bold text-lg w-full text-red-600 border-2 rounded-full border-red-600"> {property.status}</h2> : property.status === 'Bought' ? <h2 className="text-center font-bold text-lg w-full text-blue-600 border-2 rounded-full border-blue-600"> {property.status}</h2> : <h2 className="text-center font-bold text-lg w-full text-yellow-400 border-2 rounded-full border-yellow-400"> {property.status}</h2>}
                             </div>
+                            {
+                                property.status === "Accepted" ? <div className='border-t-2 border-[#FEFFFF] mt-1 flex justify-end'>
+                                    <Link to={`/dashboard/payment-for/${property._id}`}><button className="btn min-h-0 h-8 bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md px-6 mt-2">Pay</button></Link>
+                                </div> : property.status === "Bought" ? <div className='border-t-2 border-[#FEFFFF] mt-1 flex justify-center'>
+                                    <CopyToClipboard text={property.transition_id} onCopy={(text, result) => {
+                                        setCopied(true)
+                                    }}>
+                                        <button className={ copied ? 'font-bold flex items-center gap-2 mt-2 text-[#16a34a]' : 'font-bold flex items-center gap-2 mt-2 text-[#FEFFFF]'}>{ copied ? <RiCheckDoubleFill className='text-xl'></RiCheckDoubleFill> : <FaCopy className='text-lg'></FaCopy>} {property.transition_id}</button>
+                                    </CopyToClipboard>
+                                </div> : <></>
+                            }
                         </div>
                     </div>)
                     }
