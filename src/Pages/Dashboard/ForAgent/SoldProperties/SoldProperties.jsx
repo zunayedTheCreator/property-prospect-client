@@ -14,7 +14,7 @@ const SoldProperties = () => {
             const filtered = res.data.filter(property => property.status === 'Bought');
             setProperties(filtered)
         })
-    }, [axiosSecure])
+    }, [axiosSecure, user.email])
 
     return (
         <div className='mt-8'>

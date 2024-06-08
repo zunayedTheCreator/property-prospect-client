@@ -23,6 +23,7 @@ import UpdateProperty from '../Pages/Dashboard/ForAgent/UpdateProperty/UpdatePro
 import RequestedProperties from '../Pages/Dashboard/ForAgent/RequestedProperties/RequestedProperties';
 import PaymentPage from '../Pages/Dashboard/ForUser/PaymentPage/PaymentPage';
 import SoldProperties from '../Pages/Dashboard/ForAgent/SoldProperties/SoldProperties';
+import ManageReviews from '../Pages/Dashboard/ForAdmin/ManageReviews/ManageReviews';
 
 export const router = createBrowserRouter([
     {
@@ -98,7 +99,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'manage-reviews',
-                element: <h2>manage-reviews</h2>
+                element: <AdminRoute><ManageReviews></ManageReviews></AdminRoute>
             },
 
             // agent routes
