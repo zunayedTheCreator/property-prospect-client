@@ -22,6 +22,7 @@ import AddedProperties from '../Pages/Dashboard/ForAgent/AddedProperties/AddedPr
 import UpdateProperty from '../Pages/Dashboard/ForAgent/UpdateProperty/UpdateProperty';
 import RequestedProperties from '../Pages/Dashboard/ForAgent/RequestedProperties/RequestedProperties';
 import PaymentPage from '../Pages/Dashboard/ForUser/PaymentPage/PaymentPage';
+import SoldProperties from '../Pages/Dashboard/ForAgent/SoldProperties/SoldProperties';
 
 export const router = createBrowserRouter([
     {
@@ -117,6 +118,10 @@ export const router = createBrowserRouter([
             {
                 path: 'requested-properties',
                 element: <AgentRoute><RequestedProperties></RequestedProperties></AgentRoute>
+            },
+            {
+                path: 'sold-properties',
+                element: <AgentRoute><SoldProperties></SoldProperties></AgentRoute>
             },
         ]
     }

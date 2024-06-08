@@ -88,7 +88,7 @@ const Dashboard = () => {
                                     : isPending
                                     ? "pending text-[#FEFFFF]"
                                     : "rounded-full font-bold text-[#FEFFFF]"
-                                } to={'/dashboard/my-sold-properties'}><li><a>My sold properties</a></li></NavLink>
+                                } to={'/dashboard/sold-properties'}><li><a>My sold properties</a></li></NavLink>
                         <NavLink className={({ isActive, isPending }) =>
                                     isActive
                                     ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
