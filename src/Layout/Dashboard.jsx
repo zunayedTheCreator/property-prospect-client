@@ -11,7 +11,7 @@ const Dashboard = () => {
     const [isAgent] = useAgent();
 
     return (
-        <div className='bg-[#3AAFA9] flex w-full'>
+        <div className='bg-[#3AAFA9] flex min-w-full min-h-screen'>
             <div className='hidden lg:block w-[300px] min-h-screen bg-[#17242A] text-[#FEFFFF] px-2 py-3'>
                 <div className='flex items-center mb-8'>
                     <h4 className="text-2xl border-y-none border-l-none border-r-4 border-[#FEFFFF] pr-3 font-bold w-fit">Property Prospect</h4>
@@ -47,7 +47,16 @@ const Dashboard = () => {
                                     ? "pending text-[#FEFFFF]"
                                     : "rounded-full font-bold text-[#FEFFFF]"
                                 } to={'/dashboard/manage-reviews'}><li><a>Manage reviews</a></li></NavLink>
-                    </ul> : isAgent ? <ul className='menu p-0 gap-3'>
+                        <NavLink className={({ isActive, isPending }) =>
+                                    isActive
+                                    ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
+                                    : isPending
+                                    ? "pending text-[#FEFFFF]"
+                                    : "rounded-full font-bold text-[#FEFFFF]"
+                                } to={'/dashboard/advertise-property'}><li><a>Advertise property</a></li></NavLink>
+                    </ul> : 
+
+                    isAgent ? <ul className='menu p-0 gap-3'>
                         <NavLink className={({ isActive, isPending }) =>
                                     isActive
                                     ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"
@@ -83,7 +92,9 @@ const Dashboard = () => {
                                     ? "pending text-[#FEFFFF]"
                                     : "rounded-full font-bold text-[#FEFFFF]"
                                 } to={'/dashboard/requested-properties'}><li><a>Requested properties</a></li></NavLink>
-                    </ul> : <ul className='menu p-0 gap-3'>
+                    </ul> : 
+
+                    <ul className='menu p-0 gap-3'>
                         <NavLink className={({ isActive, isPending }) =>
                                     isActive
                                     ? "text-[#17242A] bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold hover:text-[#17242A]"

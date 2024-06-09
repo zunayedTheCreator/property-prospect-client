@@ -22,23 +22,10 @@ const Advertisement = () => {
     const cards = datas.map(data => <SwiperSlide key={data._id}><AdvertisementCard data={data}></AdvertisementCard></SwiperSlide>)
 
     return (
-        <div className='max-w-4xl mx-auto mb-9'>
-            <Swiper
-                spaceBetween={30}
-                centeredSlides={true}
-                autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-                }}
-                pagination={{
-                clickable: true,
-                }}
-                navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper h-[550px] mt-10"
-            >
+        <div className='mb-9'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 w-fit mx-auto'>
                 {cards}
-            </Swiper>
+            </div>
         </div>
     );
 };

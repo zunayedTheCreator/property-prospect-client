@@ -20,6 +20,10 @@ const SoldProperties = () => {
         <div className='mt-8'>
         <Header header="Sold Properties"></Header>
         <div className='px-2 md:px-4 mt-7'>
+            <div className='border-b border-[#FEFFFF] flex items-center justify-between px-6 pb-1 mb-4'>
+                <h2 className='text-xl font-bold text-[#FEFFFF]'>Total Property Sold:</h2>
+                <h2 className='text-xl font-bold text-[#FEFFFF]'>{properties.length}</h2>
+            </div>
             <div className="overflow-x-auto rounded-t-lg border-[#FEFFFF]">
                 <table className="table">
                     {/* head */}
