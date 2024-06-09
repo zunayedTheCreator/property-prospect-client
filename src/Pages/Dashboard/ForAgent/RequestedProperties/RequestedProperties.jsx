@@ -98,7 +98,7 @@ const RequestedProperties = () => {
                             properties.map((property, index) => <tr key={property._id}>
                                 <th>{index + 1}</th>
                                 <td>{property.property_title}</td>
-                                <td>{property.property_title}</td>
+                                <td>{property.property_location}</td>
                                 <td>{property.user_name}</td>
                                 <td>{property.user_email}</td>
                                 <td>${property.offered_amount}</td>

@@ -24,6 +24,7 @@ import RequestedProperties from '../Pages/Dashboard/ForAgent/RequestedProperties
 import PaymentPage from '../Pages/Dashboard/ForUser/PaymentPage/PaymentPage';
 import SoldProperties from '../Pages/Dashboard/ForAgent/SoldProperties/SoldProperties';
 import ManageReviews from '../Pages/Dashboard/ForAdmin/ManageReviews/ManageReviews';
+import ManageProperties from '../Pages/Dashboard/ForAdmin/ManageProperties/ManageProperties';
 
 export const router = createBrowserRouter([
     {
@@ -91,7 +92,7 @@ export const router = createBrowserRouter([
             // admin routes
             {
                 path: 'manage-properties',
-                element: <h2>manage-properties</h2>
+                element: <AdminRoute><ManageProperties></ManageProperties></AdminRoute>
             },
             {
                 path: 'manage-users',
