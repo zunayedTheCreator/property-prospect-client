@@ -1,9 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { FaClock, FaEnvelope, FaPen, FaUser } from 'react-icons/fa';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const UserProfile = () => {
     const {user} = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure();
+    const [currentUser, setCurrentUser] = useState({})
+
+    useEffect(() => {
+        axiosSecure.get(`/user/normal/${user.email}`)
+        .then(res => {
+            setCurrentUser(res.data)
+        })
+    }, [axiosSecure, user.email])
 
     return (
         <div className='min-h-screen flex items-center justify-center'>
@@ -23,7 +34,12 @@ const UserProfile = () => {
                     <h3 className='font-bold flex items-center gap-2 text-base md:text-xl'><FaClock className='text-xl md:text-2xl'></FaClock> {user.metadata?.creationTime}</h3>
                 </div>
                 <div className='border-t-2 border-[#FEFFFF] mb-5 mt-3'></div>
-                <button className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md"><FaPen></FaPen>Update Profile</button>
+                <div className='flex items-center justify-between'>
+                    <button className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md"><FaPen></FaPen>Update Profile</button>
+                    {
+                        currentUser?.role === 'admin' ? <h2 className="text-center font-bold px-3 py-1 w-fit text-pink-600 border-2 rounded-full border-pink-600"> {currentUser.role}</h2> : currentUser?.role === 'agent' ? <h2 className="text-center font-bold px-3 py-1 w-fit text-indigo-600 border-2 rounded-full border-indigo-600"> {currentUser.role}</h2> : <></>
+                    }
+                </div>
             </div>
         </div>
     );
