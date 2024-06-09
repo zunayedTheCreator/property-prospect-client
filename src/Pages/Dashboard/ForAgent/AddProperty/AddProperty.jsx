@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../hooks/useAuth';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2'
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import { MdBlockFlipped } from 'react-icons/md';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -11,6 +12,14 @@ const AddProperty = () => {
     const {user} = useAuth();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const [currentUser, setCurrentUser] = useState({})
+
+    useEffect(() => {
+        axiosSecure.get(`/user/normal/${user.email}`)
+        .then(res => {
+            setCurrentUser(res.data)
+        })
+    }, [axiosSecure, user.email])
 
     const { register, handleSubmit, reset } = useForm()
 
@@ -122,7 +131,7 @@ const AddProperty = () => {
                             <textarea required {...register('description')} className="textarea textarea-bordered w-full bg-[#FEFFFF] font-bold text-[#17242A] no-resize" rows={3} placeholder="Description"></textarea>
                         </label>
                     </div>
-                    <button className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md w-full">Add Property</button>
+                    {currentUser.status === 'fraud' ? <h2 className="flex items-center gap-1 font-bold px-3 py-1 w-fit text-red-600 rounded-full text-center mx-auto"><MdBlockFlipped className='text-lg'></MdBlockFlipped> You cant because you are a fraud</h2> : <button className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md w-full">Add Property</button>}
                 </form>
             </div>
         </div>

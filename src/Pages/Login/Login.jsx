@@ -27,14 +27,23 @@ const Login = () => {
         signIn(email, password)
         .then(result => {
             const user = result.user;
-            console.log(user);
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Successfully Signed In!",
-                showConfirmButton: false,
-                timer: 2000
-            });
+            const userInfo = {
+                name : user.displayName,
+                email : user.email
+            }
+            axiosPublic.post('user', userInfo)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Successfully Signed In!",
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    navigate(from, {replace: true});
+                }
+            }) 
             navigate(from, {replace: true});
         })
         .catch(error => {

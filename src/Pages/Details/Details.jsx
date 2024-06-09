@@ -4,9 +4,13 @@ import { useLoaderData } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2'
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAdmin from '../../hooks/useAdmin';
+import useAgent from '../../hooks/useAgent';
 
 const Details = () => {
     const {user} = useAuth();
+    const [isAdmin] = useAdmin();
+    const [isAgent] = useAgent();
     const axiosSecure = useAxiosSecure();
     const property = useLoaderData();
     const { property_image, property_title, property_location, agent_name, agent_image, verification_status, price_range, _id, description, agent_email } = property;
@@ -135,14 +139,14 @@ const Details = () => {
                         <h2 className='flex items-center text-sm md:text-base gap-1'><FaDollarSign className='text-base md:text-lg'></FaDollarSign>Price Range:- {price_range}</h2>
                     </div>
                     <div className='flex justify-end'>
-                        <button onClick={handleAddToWishlist} className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md">Add to wishlist</button>
+                        { isAdmin ? <></> : isAgent ? <></> : <button onClick={handleAddToWishlist} className="btn bg-[#DEF2F1] hover:bg-[#FEFFFF] text-black font-bold rounded-md">Add to wishlist</button>}
                     </div>
 
                 </div>
                 <div className='max-w-7xl mx-auto px-2 md:px-0'>
                     <div className='border-b border-black pb-1 flex items-center justify-between mb-4'>
                         <h2 className='text-4xl font-bold ml-2'>Reviews</h2>
-                        <button onClick={()=>document.getElementById('my_modal').showModal()} className="btn min-h-0 h-8 bg-transparent hover:bg-[#17242A] font-bold rounded px-4 border-2 border-[#17242A] text-[#17242A] hover:text-[#FEFFFF] hover:border-[#17242A] mr-2"><FaPen></FaPen> Add a review </button>
+                        { isAdmin ? <></> : isAgent ? <></> : <button onClick={()=>document.getElementById('my_modal').showModal()} className="btn min-h-0 h-8 bg-transparent hover:bg-[#17242A] font-bold rounded px-4 border-2 border-[#17242A] text-[#17242A] hover:text-[#FEFFFF] hover:border-[#17242A] mr-2"><FaPen></FaPen> Add a review </button>}
                         <dialog id="my_modal" className="modal modal-bottom sm:modal-middle z-[1]">
                             <div className="modal-box bg-[#17242A] text-[#FEFFFF]">
                                 <form method="dialog">
