@@ -46,9 +46,47 @@ const Login = () => {
             }) 
             navigate(from, {replace: true});
         })
-        .catch(error => {
-            toast.error(error)
-        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            if (errorCode === 'auth/wrong-password') {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: 'Incorrect password. Please try again.',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            } 
+            else if (errorCode === 'auth/user-not-found') {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: 'No user found with this email.',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            } 
+            else if (errorCode === 'auth/invalid-email') {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: 'Invalid email format.',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            } 
+            else {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: 'Error: ' + errorMessage,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+        });
     } 
 
     const googleProvider = new GoogleAuthProvider();

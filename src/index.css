@@ -59,3 +59,13 @@
 .no-resize {
   resize: none;
 }
+
+.no-border {
+  border: none;
+  outline: none;
+}
+
+.no-border:focus {
+  border: none;
+  outline: none;
+}
