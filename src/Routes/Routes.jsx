@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
         {
             path:"/property-details/:id",
             element: <PrivateRoute><Details></Details></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/property/${params.id}`)
+            loader: ({params}) => fetch(`https://property-prospect-server.vercel.app/property/${params.id}`)
         },
       ]
     },
@@ -82,12 +82,12 @@ export const router = createBrowserRouter([
             {
                 path: 'make-offer-for/:id',
                 element: <MakeOffer></MakeOffer>,
-                loader: ({params}) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+                loader: ({params}) => fetch(`https://property-prospect-server.vercel.app/wishlist/${params.id}`)
             },
             {
                 path: 'payment-for/:id',
                 element: <PaymentPage></PaymentPage>,
-                loader: ({params}) => fetch(`http://localhost:5000/brought-property/${params.id}`)
+                loader: ({params}) => fetch(`https://property-prospect-server.vercel.app/brought-property/${params.id}`)
             },
 
             // admin routes
@@ -120,7 +120,7 @@ export const router = createBrowserRouter([
             {
                 path: 'update-property/:id',
                 element: <AgentRoute><UpdateProperty></UpdateProperty></AgentRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/property/${params.id}`)
+                loader: ({params}) => fetch(`https://property-prospect-server.vercel.app/property/${params.id}`)
             },
             {
                 path: 'requested-properties',

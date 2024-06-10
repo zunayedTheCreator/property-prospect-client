@@ -20,7 +20,7 @@ const PropertyBrought = () => {
     const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        fetch('http://localhost:5000/brought-property')
+        fetch('https://property-prospect-server.vercel.app/brought-property')
         .then(res => res.json())
         .then(data => {
             setProperties(data)

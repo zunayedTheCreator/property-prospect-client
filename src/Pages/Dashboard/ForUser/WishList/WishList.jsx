@@ -16,7 +16,7 @@ const WishList = () => {
     const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        fetch('http://localhost:5000/wishlist')
+        fetch('https://property-prospect-server.vercel.app/wishlist')
         .then(res => res.json())
         .then(data => {
             setProperties(data)

@@ -10,7 +10,7 @@ const Reviews = () => {
     const [slicedDatas, setSlicedDatas] = useState([]);
 
     useEffect( () => {
-        fetch('http://localhost:5000/review')
+        fetch('https://property-prospect-server.vercel.app/review')
         .then(res => res.json())
         .then(data => {
             const reversedData = data.reverse();

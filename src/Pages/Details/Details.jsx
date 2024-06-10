@@ -30,7 +30,7 @@ const Details = () => {
     })
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://property-prospect-server.vercel.app/review')
         .then(res => res.json())
         .then(data => {
             setReviews(data)
