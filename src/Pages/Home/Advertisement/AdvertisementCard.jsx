@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const AdvertisementCard = ({data}) => {
     const {image, location, price_range, verification_status, main_id} = data;
     return (
-        <div className="card sm:w-[350px] md:w-[400px] bg-[#17242A] text-[#FEFFFF] shadow-xl mx-auto rounded-md mt-6">
+        <div className="animate__animated animate__fadeIn card sm:w-[350px] md:w-[400px] bg-[#17242A] text-[#FEFFFF] shadow-xl mx-auto rounded-md mt-6">
             <figure><img src={image} alt="property" className='w-full h-[250px] object-cover' /></figure>
             <div className="card-body">
                 <div className='border-2 rounded-full border-green-600'>

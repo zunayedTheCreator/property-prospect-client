@@ -21,7 +21,7 @@ const UserProfile = () => {
 
     return (
         <div className='min-h-screen flex items-center justify-center'>
-            <div className='w-[350px] md:w-[450px] bg-[#17242A] rounded-lg px-3 py-4 text-[#FEFFFF]'>
+            <div className='animate__animated animate__pulse w-[350px] md:w-[450px] bg-[#17242A] rounded-lg px-3 py-4 text-[#FEFFFF]'>
                 <div className='text-center mb-2'>
                     <div className="avatar">
                         <div className="w-20 rounded-full border-2 border-[#FEFFFF]">

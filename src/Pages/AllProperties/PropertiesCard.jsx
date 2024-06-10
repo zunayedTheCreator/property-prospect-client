@@ -7,7 +7,7 @@ const PropertiesCard = ({data}) => {
     const { property_image, property_title, property_location, agent_name, agent_image, verification_status, price_range, _id } = data;
 
     return (
-        <div className="card w-[350px] md:w-[400px] bg-[#17242A] text-[#FEFFFF] shadow-xl mx-auto rounded-md">
+        <div className="animate__animated animate__fadeIn card w-[350px] md:w-[400px] bg-[#17242A] text-[#FEFFFF] shadow-xl mx-auto rounded-md">
             <figure><img src={property_image} alt="property" className='w-full h-[200px] object-cover' /></figure>
             <div className="card-body p-4">
                 <div className='flex items-center justify-between mb-2 border-b-2 border-[#FEFFFF] pb-2'>
