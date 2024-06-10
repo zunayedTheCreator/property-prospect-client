@@ -83,21 +83,20 @@ const Navbar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#17242A] rounded-box w-52 border border-[#FEFFFF] gap-2">
                             <h3 className='font-bold text-lg ml-2'>{user?.displayName}</h3>
                             <div className='border-b-2 border-[#FEFFFF]'></div>
-                            <NavLink to={'/'} className={({ isActive, isPending }) =>
+                            <NavLink to={'/dashboard/profile'} className={({ isActive, isPending }) =>
                                 isActive
                                 ? " bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold text-black"
                                 : isPending
                                 ? "pending text-[#FEFFFF]"
                                 : "rounded-full font-bold text-[#FEFFFF]"
                             }><li><a><FaUser></FaUser>Profile</a></li></NavLink>
-                            <NavLink to={'/update-profile'} className={({ isActive, isPending }) =>
+                            <NavLink to={'/dashboard/profile'} className={({ isActive, isPending }) =>
                                 isActive
                                 ? " bg-[#DEF2F1] hover:bg-[#FEFFFF] rounded-full font-bold text-black"
                                 : isPending
                                 ? "pending text-[#FEFFFF]"
                                 : "rounded-full font-bold text-[#FEFFFF]"
                             }><li><a><FaEdit></FaEdit>Update Profile</a></li></NavLink>
-                            <li><a>Logout</a></li>
                         </ul>
                     </div>
                     <h3 className='hidden md:flex font-bold border-r-2 border-[#FEFFFF] pr-2 mr-2'>{user?.displayName}</h3>
