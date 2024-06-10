@@ -5,6 +5,7 @@ import Header from '../../Shared/Header/Header';
 import Reviews from './Reviews/Reviews';
 import Ad from './Ad/Ad';
 import MyDynamicTitle from '../../../MyDynamicTitle';
+import LatestProperty from './LatestProperty/LatestProperty';
 
 const Home = () => {
     MyDynamicTitle('Property | Home')
@@ -19,6 +20,10 @@ const Home = () => {
             <div className='max-w-7xl mx-auto'>
                 <Header header='Latest User reviews' ></Header>
                 <Reviews></Reviews>
+            </div>
+            <div className='max-w-7xl mx-auto'>
+                <Header header='Latest Property' ></Header>
+                <LatestProperty></LatestProperty>
             </div>
         </div>
     );

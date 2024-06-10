@@ -18,7 +18,8 @@ const AllProperties = () => {
         axiosPublic.get('/property')
         .then(res => {
             const filtered = res.data.filter(data => data.verification_status === 'Verified');
-            setProperties(filtered)
+            const reversedData = filtered.reverse();
+            setProperties(reversedData)
         })
     }, [axiosPublic])
     console.log(properties);
