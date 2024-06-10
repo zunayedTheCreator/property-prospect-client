@@ -5,8 +5,10 @@ import { FaCheck } from 'react-icons/fa';
 import { FaXmark } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const ManageProperties = () => {
+    MyDynamicTitle('Dashboard | Manage Properties')
     const [property, refetch] = useProperty();
     const axiosSecure = useAxiosSecure();
 

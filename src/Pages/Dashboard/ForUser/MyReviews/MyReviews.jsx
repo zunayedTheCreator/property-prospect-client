@@ -3,8 +3,10 @@ import { AuthContext } from '../../../../providers/AuthProvider';
 import { FaRegClock, FaTrashAlt } from 'react-icons/fa';
 import useAxiosSecure, { axiosSecure } from '../../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2'
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const MyReviews = () => {
+    MyDynamicTitle('Dashboard | My Reviews')
     const {user} = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     const [filteredReviews, setFilteredReviews] = useState([]);

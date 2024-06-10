@@ -4,8 +4,10 @@ import { FaClock, FaEnvelope, FaPen, FaUser } from 'react-icons/fa';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { MdBlockFlipped } from 'react-icons/md';
+import MyDynamicTitle from '../../../../MyDynamicTitle';
 
 const UserProfile = () => {
+    MyDynamicTitle('Property | Profile')
     const {user} = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
     const [currentUser, setCurrentUser] = useState({})

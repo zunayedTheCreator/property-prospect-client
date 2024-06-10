@@ -4,8 +4,10 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { FaEnvelope, FaRegClock, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const ManageReviews = () => {
+    MyDynamicTitle('Dashboard | Manage Reviews')
     const axiosSecure = useAxiosSecure();
 
     const {data: reviews = [], refetch} = useQuery({

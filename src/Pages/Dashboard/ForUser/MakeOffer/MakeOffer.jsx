@@ -3,8 +3,10 @@ import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../../providers/AuthProvider';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2'
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const MakeOffer = () => {
+    MyDynamicTitle('Dashboard | Make Offer')
     const {user} = useContext(AuthContext);
     const property = useLoaderData();
     const axiosSecure = useAxiosSecure();

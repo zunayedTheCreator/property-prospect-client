@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { FaCopy } from "react-icons/fa";
 import { RiCheckDoubleFill } from "react-icons/ri";
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const PropertyBrought = () => {
+    MyDynamicTitle('Dashboard | Brought Property')
     const {user} = useContext(AuthContext);
     const [properties, setProperties] = useState([]);
     const [filteredProperties, setFilteredProperties] = useState([]);

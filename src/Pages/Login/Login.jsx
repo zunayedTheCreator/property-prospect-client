@@ -8,9 +8,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { GoogleAuthProvider } from 'firebase/auth';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import MyDynamicTitle from '../../../MyDynamicTitle';
 
 const Login = () => {
-
+    MyDynamicTitle('Property | Login')
     const {signIn, googleLogin} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();

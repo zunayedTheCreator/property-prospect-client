@@ -5,8 +5,10 @@ import Header from '../../../../Shared/Header/Header';
 import { FaTrashAlt } from 'react-icons/fa';
 import { MdBlockFlipped } from "react-icons/md";
 import Swal from 'sweetalert2'
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const ManageUser = () => {
+    MyDynamicTitle('Dashboard | Manage User')
     const axiosSecure = useAxiosSecure();
     const {data: users = [], refetch} = useQuery({
         queryKey: ['users'],

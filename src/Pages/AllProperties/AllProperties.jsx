@@ -7,8 +7,10 @@ import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { FaAngleUp, FaChevronDown, FaChevronUp, FaSearch } from 'react-icons/fa';
 import { axiosSecure } from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import MyDynamicTitle from '../../../MyDynamicTitle';
 
 const AllProperties = () => {
+    MyDynamicTitle('Property | All Properties')
     const {user} = useAuth();
     const axiosPublic = useAxiosPublic();
     const [properties, setProperties] = useState([]);

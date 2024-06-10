@@ -6,8 +6,10 @@ import Swal from 'sweetalert2'
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useAdmin from '../../hooks/useAdmin';
 import useAgent from '../../hooks/useAgent';
+import MyDynamicTitle from '../../../MyDynamicTitle';
 
 const Details = () => {
+    MyDynamicTitle('Property | Details')
     const {user} = useAuth();
     const [isAdmin] = useAdmin();
     const [isAgent] = useAgent();

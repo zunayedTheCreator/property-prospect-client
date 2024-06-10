@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import Header from '../../../../Shared/Header/Header';
 import useAuth from '../../../../hooks/useAuth';
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const SoldProperties = () => {
+    MyDynamicTitle('Dashboard | Sold Properties')
     const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
     const [properties, setProperties] = useState([]);

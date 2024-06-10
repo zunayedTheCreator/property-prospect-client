@@ -5,9 +5,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2'
 import useAxiosPublic from '../../hooks/useAxiosPublic';
+import MyDynamicTitle from '../../../MyDynamicTitle';
 
 const Register = () => {
-
+    MyDynamicTitle('Property | Register')
     const {createUser, profileUpdate} = useContext(AuthContext);
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();

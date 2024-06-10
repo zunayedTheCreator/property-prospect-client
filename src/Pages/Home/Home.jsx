@@ -4,8 +4,10 @@ import Banner from './Banner/Banner';
 import Header from '../../Shared/Header/Header';
 import Reviews from './Reviews/Reviews';
 import Ad from './Ad/Ad';
+import MyDynamicTitle from '../../../MyDynamicTitle';
 
 const Home = () => {
+    MyDynamicTitle('Property | Home')
     return (
         <div>
             <Banner></Banner>

@@ -5,10 +5,12 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const UpdateProperty = () => {
+    MyDynamicTitle('Dashboard | Update Property')
     const property = useLoaderData();
     console.log(property);
     const {user} = useAuth();

@@ -4,8 +4,10 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import { FaDollarSign, FaMapPin, FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const WishList = () => {
+    MyDynamicTitle('Dashboard | Wishlist')
     const {user} = useContext(AuthContext);
     const [properties, setProperties] = useState([]);
     const [filteredProperties, setFilteredProperties] = useState([]);

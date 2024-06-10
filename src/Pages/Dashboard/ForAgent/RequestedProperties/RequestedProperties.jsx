@@ -6,8 +6,10 @@ import { FaCheck } from 'react-icons/fa';
 import Header from '../../../../Shared/Header/Header';
 import { FaXmark } from "react-icons/fa6";
 import Swal from 'sweetalert2';
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const RequestedProperties = () => {
+    MyDynamicTitle('Dashboard | Requested Properties')
     const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
 

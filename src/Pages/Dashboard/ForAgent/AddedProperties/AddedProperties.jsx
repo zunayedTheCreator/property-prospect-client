@@ -6,8 +6,11 @@ import { FaDollarSign, FaMapPin, FaPen, FaTrashAlt, FaUser } from 'react-icons/f
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const AddedProperties = () => {
+
+    MyDynamicTitle('Dashboard | Added Properties')
     const {user} = useAuth();
     const axiosSecure = useAxiosSecure();
 

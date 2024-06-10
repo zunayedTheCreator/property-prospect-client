@@ -4,8 +4,10 @@ import Header from '../../../../Shared/Header/Header';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
+import MyDynamicTitle from '../../../../../MyDynamicTitle';
 
 const PaymentPage = () => {
+    MyDynamicTitle('Dashboard | Payment')
     const property = useLoaderData();
     console.log(property);
 
