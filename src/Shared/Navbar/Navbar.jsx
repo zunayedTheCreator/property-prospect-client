@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2'
 import { FaEdit, FaUser } from 'react-icons/fa';
 import { Tooltip } from 'react-tooltip';
+import logo from '../../../public/images/logo.png'
 
 const Navbar = () => {
     const {user, logOut} = useContext(AuthContext)
@@ -57,7 +58,10 @@ const Navbar = () => {
                     {navLinks}
                 </ul>
                 </div>
-                <a className="text-xl mr-7 border-y-none border-l-none border-r-4 border-[#FEFFFF] pr-3 font-bold">Property Prospect</a>
+                <div className='flex items-center gap-3'>
+                    <img className='w-[50px]' src={logo} alt="" />
+                    <a className="text-xl mr-7 border-y-none border-l-none border-r-4 border-[#FEFFFF] pr-3 font-bold">Property Prospect</a>
+                </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-2">
                         {navLinks}
